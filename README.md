@@ -1,9 +1,9 @@
 # Basic Lamp Stack
 
 ## Introduction
-This is lamp stack cloned from the sprintcube lamp stack, and has all the architecturte you'll need for LAMP development.
+This is lamp stack cloned from the sprintcube lamp stack, and has all the architecture you'll need for LAMP development.
 
-Cloned from https://github.com/sprintcube/docker-compose-lamp
+The inital stack is cloned from https://github.com/sprintcube/docker-compose-lamp
 
 In this version I've added the codeception test platform
 
