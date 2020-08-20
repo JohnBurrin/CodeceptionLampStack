@@ -9,7 +9,7 @@ In this version I've added the codeception test platform
 
 I wanted a php container that I could use to write automated acceptace tests for a remote host, the whole stack is overkill really for what I need it to do.
 
-The sample test loads the google home page in headless chrome browser and tests the title
+The sample test loads the google home page in headless chrome browser and tests the Google search page by searching for `php`,
 
 https://codeception.com/quickstart
 
@@ -39,7 +39,12 @@ Test: tests/acceptance/FirstCest.php:frontpageWorks
 Scenario --
  I am on page "/"
  I see in title "Google"
+ I fill field "q","php"
+ I click "btnK"
+ I see in title "php - Google Search"
+ I see "PHP: Hypertext Preprocessor"
  PASSED
+
 ```
 
 ## Configuration
@@ -61,3 +66,13 @@ The build consistis of the following containers
 | lamp-phpmyadmin     | phpmyadmin   | docker-compose exec phpmyadmin bash   |   |   |
 | lamp-redis          | redis        | docker-compose exec redis bash        |   |   |
 | lamp_test-browser_1 | test-browser | docker-compose exec test-browser bash |   |   |
+
+
+## tests
+
+See the documentation at https://codeception.com/quickstart for morinformation on testing with CodeceptionLampStack
+
+## Run tests
+
+Remember you need to be in the `/var/www` folder
+`php vendor/bin/codecept run --steps`

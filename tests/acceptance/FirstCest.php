@@ -16,5 +16,9 @@ class FirstCest
         $I->amOnPage('/');
 //        $I->see('LAMP STACK');
         $I->seeInTitle('Google');
+        $I->fillField('q', 'php');
+        $I->click('btnK');
+        $I->seeInTitle('php - Google Search');
+        $I->see("PHP: Hypertext Preprocessor");
     }
 }
