@@ -1,7 +1,7 @@
 # Basic Lamp Stack
 
 ## Introduction
-This is lamp stack cloned from the sprintcube lamp stack, and has all the architecture you'll need for LAMP development.
+This lamp stack cloned from the sprintcube lamp stack, and has all the architecture you'll need for LAMP development.
 
 The inital stack is cloned from https://github.com/sprintcube/docker-compose-lamp
 
