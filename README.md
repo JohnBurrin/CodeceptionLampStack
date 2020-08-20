@@ -1,6 +1,13 @@
-# Basic Lamp Stach cloned from https://github.com/sprintcube/docker-compose-lamp
+# Basic Lamp Stack
 
 ## Introduction
+This is lamp stack cloned from the sprintcube lamp stack, and has all the architecturte you'll need for LAMP development.
+
+Cloned from https://github.com/sprintcube/docker-compose-lamp
+
+In this version I've added the codeception test platform
+
+https://codeception.com/quickstart
 
 ## Instructions
 
@@ -12,3 +19,20 @@
 6. `cd ../``
 7. `composer install`
 8. `php vendor/bin/codecept run --steps`
+
+
+```
+FirstCest: Try to test
+Signature: FirstCest:tryToTest
+Test: tests/acceptance/FirstCest.php:tryToTest
+Scenario --
+ PASSED
+
+FirstCest: Frontpage works
+Signature: FirstCest:frontpageWorks
+Test: tests/acceptance/FirstCest.php:frontpageWorks
+Scenario --
+ I am on page "/"
+ I see in title "Google"
+ PASSED
+```
