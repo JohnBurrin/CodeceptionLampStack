@@ -2,17 +2,24 @@ version: "3"
 
 services:
   webserver:
-    build: 
+    build:
       context: ./bin/${PHPVERSION}
     container_name: '${COMPOSE_PROJECT_NAME}-${PHPVERSION}'
     restart: 'always'
     ports:
       - "${HOST_MACHINE_UNSECURE_HOST_PORT}:80"
       - "${HOST_MACHINE_SECURE_HOST_PORT}:443"
-    links: 
+    links:
       - database
-    volumes: 
+    volumes:
       - ${DOCUMENT_ROOT-./www}:/var/www/html
+      - ./composer.json:/var/www/composer.json
+      - ./composer.lock:/var/www/composer.lock
+      - ./codeception.yml:/var/www/codeception.yml
+      - ./phpstan.neon:/var/www/phpstan.neon
+      - ./.env:/var/www/.env
+      - ./tests:/var/www/tests
+      - ./vendor:/var/www/vendor
       - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
       - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
       - ${LOG_DIR-./logs/apache2}:/var/log/apache2
@@ -25,7 +32,7 @@ services:
     restart: 'always'
     ports:
       - "127.0.0.1:${HOST_MACHINE_MYSQL_PORT}:3306"
-    volumes: 
+    volumes:
       - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
       - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
     environment:
@@ -48,7 +55,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - '${HOST_MACHINE_PMA_PORT}:80'
-    volumes: 
+    volumes:
       - /sessions
       - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
   redis:
@@ -56,3 +63,9 @@ services:
     image: redis:latest
     ports:
       - "127.0.0.1:${HOST_MACHINE_REDIS_PORT}:6379"
+
+  test-browser:
+    image: selenium/standalone-chrome-debug:3.141.59-gold
+    privileged: true
+    volumes:
+      - /dev/shm:/dev/shm
