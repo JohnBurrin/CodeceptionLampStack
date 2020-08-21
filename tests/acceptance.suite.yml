@@ -9,8 +9,7 @@ modules:
     enabled:
         - WebDriver:
             # Localhost testing
-            url: http://app
-            # Remote server testing
+            url: http://webserver/
             host: test-browser
             browser: chrome
         - \Helper\Acceptance
