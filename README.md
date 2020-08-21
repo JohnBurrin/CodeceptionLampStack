@@ -29,23 +29,74 @@ This branch specifically tests a remote website.
 
 
 ```
-FirstCest: Try to test
-Signature: FirstCest:tryToTest
-Test: tests/acceptance/FirstCest.php:tryToTest
-Scenario --
- PASSED
-
 FirstCest: Frontpage works
 Signature: FirstCest:frontpageWorks
 Test: tests/acceptance/FirstCest.php:frontpageWorks
 Scenario --
  I am on page "/"
- I see in title "Google"
- I fill field "q","php"
- I click "btnK"
- I see in title "php - Google Search"
- I see "PHP: Hypertext Preprocessor"
+ I see in title "Homepage – Lincolnshire County Council"
  PASSED
+
+FirstCest: Corona virus updates page
+Signature: FirstCest:coronaVirusUpdatesPage
+Test: tests/acceptance/FirstCest.php:coronaVirusUpdatesPage
+Scenario --
+ I am on page "/"
+ I am going to click the Coronavirus updates link
+ I click "Get advice and support"
+ I am on page "/coronavirus-support-services"
+ I see in title "Coronavirus support and services – Lincolnshire County Council"
+ I see "Coronavirus support and services"
+ PASSED
+
+FirstCest: Search
+Signature: FirstCest:search
+Test: tests/acceptance/FirstCest.php:search
+Scenario --
+ I am on page "/"
+ I am going to search for the word cathedral
+ I fill field "q","cathedral"
+ I submit form {"id":"js-search"},{"data":{"q":"cathedral"}}
+ I see "You searched for "Cathedral"."
+ PASSED
+
+FirstCest: In your area search
+Signature: FirstCest:inYourAreaSearch
+Test: tests/acceptance/FirstCest.php:inYourAreaSearch
+Scenario --
+ I am on page "/"
+ I am going to put a postcode in the search box
+ I fill field "postcode","LN1 2UE"
+ I submit form {"xpath":"//*[@id="content"]/div/div[3]/div/div/div/div/div[2]/form"},{"data":{"postcode":"LN1 2UE"}}
+ I see response code is 200
+ FAIL
+
+FirstCest: My account
+Signature: FirstCest:myAccount
+Test: tests/acceptance/FirstCest.php:myAccount
+Scenario --
+ I am on page "/"
+ I am going to going to click the my account link
+ I click "My Account"
+ I see "MyAccount"
+ PASSED
+
+FirstCest: My account incorrect login
+Signature: FirstCest:myAccountIncorrectLogin
+Test: tests/acceptance/FirstCest.php:myAccountIncorrectLogin
+Scenario --
+ I am on page "/"
+ I am going to going to click the my account link
+ I click "My Account"
+ I see in title "MyAccount – Lincolnshire County Council"
+ I click "Sign in"
+ I am on subdomain "myaccount.lincolnshire"
+ I am on page "/q/login"
+ I see in title "Sign in | Lincolnshire County Council"
+ I submit form "form",{"user":{"_username":"","_password":""}}
+ I see "Incorrect email or password"
+ PASSED
+
 
 ```
 

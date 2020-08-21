@@ -11,7 +11,7 @@ modules:
             # Localhost testing
             # url: http://app
             # Remote server testing
-        #    browser: chrome
+            #browser: chrome
             url: https://www.lincolnshire.gov.uk
             host: test-browser
         - \Helper\Acceptance
