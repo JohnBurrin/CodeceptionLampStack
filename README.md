@@ -13,6 +13,8 @@ The sample test loads the google home page in headless chrome browser and tests 
 
 https://codeception.com/quickstart
 
+This branch specifically tests a remote website.
+
 ## Instructions
 
 1. `git clone git@github.com:JohnBurrin/CodeceptionLampStack.git`
