@@ -7,11 +7,11 @@
 actor: AcceptanceTester
 modules:
     enabled:
-        - WebDriver:
+        - PhpBrowser:
             # Localhost testing
             # url: http://app
             # Remote server testing
-            url: https://google.com
+        #    browser: chrome
+            url: https://www.lincolnshire.gov.uk
             host: test-browser
-            browser: chrome
         - \Helper\Acceptance
